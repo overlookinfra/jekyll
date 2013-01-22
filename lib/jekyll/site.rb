@@ -305,11 +305,11 @@ module Jekyll
     # Returns the Array of filtered entries.
     def filter_entries(entries)
       entries = entries.reject do |e|
-        unless ['.htaccess'].include?(e)
+        unless ['.htaccess','_index.html'].include?(e)
           ['.', '_', '#'].include?(e[0..0]) ||
           e[-1..-1] == '~' ||
-          self.exclude.include?(e) ||
-          File.symlink?(e)
+          self.exclude.include?(e) # ||
+          # File.symlink?(e)
         end
       end
     end
