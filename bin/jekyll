@@ -270,7 +270,8 @@ if options['server']
 
   s = HTTPServer.new(
     :Port            => options['server_port'],
-    :MimeTypes       => mime_types
+    :MimeTypes       => mime_types,
+    :AccessLog  => []
   )
   s.mount(options['baseurl'], HTTPServlet::FileHandler, destination)
   t = Thread.new {
